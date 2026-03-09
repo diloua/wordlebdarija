@@ -367,12 +367,14 @@ function shareResults() {
   });
 }
 
+let statsSaved = false;
+
 function saveState() {
   const won = guesses.length > 0 && guesses[guesses.length - 1] === solution;
-  const lost = gameOver && !won;
 
-  if (gameOver) {
+  if (gameOver && !statsSaved) {
     updateStats(won, guesses.length);
+    statsSaved = true;
   }
 
   localStorage.setItem('wordle-bdarija-state', JSON.stringify({
