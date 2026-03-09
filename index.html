@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Wordle B'Darija</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <header>
+      <div class="header-inner">
+        <button id="help-btn" class="icon-btn" aria-label="Help">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path fill="currentColor" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+          </svg>
+        </button>
+        <h1>Wordle B'Darija</h1>
+        <button id="stats-btn" class="icon-btn" aria-label="Statistics">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path fill="currentColor" d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div id="board-container">
+      <div id="board"></div>
+    </div>
+
+    <div id="keyboard"></div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <div id="help-modal" class="modal-overlay" hidden>
+    <div class="modal">
+      <button class="modal-close">&times;</button>
+      <h2>Kif Tl3ab</h2>
+      <p>Guess the Darija word in 7 tries.</p>
+      <p>Each guess must be a valid 5-character word. Hit enter to submit.</p>
+      <p>After each guess, the tiles will flip to show how close you are.</p>
+      <hr>
+      <h3>Darija Number-Letters</h3>
+      <p>Darija uses numbers to represent Arabic sounds:</p>
+      <div class="example-chars">
+        <div class="char-explain"><span class="char-box">2</span> = ء (hamza)</div>
+        <div class="char-explain"><span class="char-box">3</span> = ع (ain)</div>
+        <div class="char-explain"><span class="char-box">7</span> = ح (ha)</div>
+        <div class="char-explain"><span class="char-box">9</span> = ق (qaf)</div>
+      </div>
+      <hr>
+      <h3>Examples</h3>
+      <div class="example-row">
+        <div class="example-tile correct">S</div>
+        <div class="example-tile">A</div>
+        <div class="example-tile">L</div>
+        <div class="example-tile">A</div>
+        <div class="example-tile">M</div>
+      </div>
+      <p><strong>S</strong> is in the word and in the correct spot.</p>
+      <div class="example-row">
+        <div class="example-tile">K</div>
+        <div class="example-tile present">H</div>
+        <div class="example-tile">B</div>
+        <div class="example-tile">A</div>
+        <div class="example-tile">R</div>
+      </div>
+      <p><strong>H</strong> is in the word but in the wrong spot.</p>
+      <div class="example-row">
+        <div class="example-tile">M</div>
+        <div class="example-tile">A</div>
+        <div class="example-tile">S</div>
+        <div class="example-tile">H</div>
+        <div class="example-tile absent">I</div>
+      </div>
+      <p><strong>I</strong> is not in the word in any spot.</p>
+      <hr>
+      <p class="credit">Word list powered by <a href="https://github.com/darija-open-dataset/dataset" target="_blank" rel="noopener">DODa</a> (Darija Open Dataset)</p>
+    </div>
+  </div>
+
+  <div id="stats-modal" class="modal-overlay" hidden>
+    <div class="modal">
+      <button class="modal-close">&times;</button>
+      <h2>Statistics</h2>
+      <div id="stats-row"></div>
+      <h3>Guess Distribution</h3>
+      <div id="guess-distribution"></div>
+      <button id="share-btn">Share</button>
+    </div>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="solutions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
